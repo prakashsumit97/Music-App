@@ -1,0 +1,1 @@
+angular.module('MusicApp', ['ui.bootstrap','ui.router', 'appRoutes', 'MusicService', 'GenreService', 'HomeCtrl', 'ngResource', 'MusicRecordsCtrl', 'AddMusicCtrl', 'EditMusicCtrl', 'GenreCtrl', 'EditAddGenreCtrl']);

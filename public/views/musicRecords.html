@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <center>
+                        <h1>Music Tracks</h1>
+                    </center>
+                </div>
+                <div class="row" style="margin-left:286px;margin-bottom:20px">
+                    <button class="btn btn-primary"><a ui-sref="home" style="color:white">Go To Home</a></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="padding-right: 404px;padding-left: 370px;">
+
+                    <div class="input-group">
+                        <span class="input-group-btn">
+       <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </span>
+                        <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Search Title" style="width:300px;height:30px"><span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="refreshSearch()"><i class="glyphicon glyphicon-remove"></i></button>
+      </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:50px;padding-left: 261px;padding-right: 239px;">
+
+                <div>
+
+                    <table class="table table-striped table-condensed table-hover">
+
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Genre</th>
+                                <th>Rating</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <td colspan="6">
+                                <div class="pagination pull-center" style="padding-left:70px">
+                                    <ul>
+                                        <li ng-class="{disabled: currentPage == 0}">
+                                            <a href ng-click="prevPage()">« Prev</a>
+                                        </li>
+
+                                        <li ng-repeat="n in range(startPage,pageLimit)" ng-class="{active: n == currentPage}" ng-click="setPage()">
+                                            <a href>Page {{n+1}}</a>
+                                        </li>
+                                        <li ng-class="{disabled: currentPage == allPages-1}">
+                                            <a href ng-click="nextPage()">Next»</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tfoot>
+                        <tbody>
+
+                            <tr ng-repeat="item in allRecords.results">
+                                <th>{{item.id}}</th>
+                                <td>{{item.title}}</td>
+                                <td><span ng-repeat="genre in item.genres">{{genre.name}}{{$last ? '' : ($index==genre.length-2) ? ' and ' : ', '}}</span></td>
+                                <td star-rating rating-value="item.rating" max="10" ng-disabled>{{item.rating}}</td>
+                                <td class="text-center"> <a class="btn btn-xs btn-info" ui-sref="edit-music({id: item.id})"><i aria-hidden="true" class="glyphicon glyphicon-edit"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:20px">
+                <center><button class="btn btn-success" ng-click="goToAddPage()">Add New Track</button></center>
+            </div>
+
+        </div>
+    </div>
+</div>

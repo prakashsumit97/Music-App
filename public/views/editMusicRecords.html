@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="row">
+        <center>
+            <h1>Add New Record</h1>
+        </center>
+    </div>
+    <div>
+        <hr>
+    </div>
+    <div class="row">
+        <form role="form" name="recordForm">
+            <div class="form-group" style="margin-top:30px">
+                <label style="margin-left: 420px;">Title</label>
+                <center><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Track Title" style="width:300px;height:40px" name="title" ng-model="record.title" required></center>
+
+            </div>
+            <div class="form-group" style="margin-top:30px">
+                <label style="margin-left: 420px;">Rating</label>
+                <center>
+                    <select style="width:300px;height:40px" name="rating" ng-model="record.rating" ng-options="rating for rating in ratingArr" required>
+
+                    </select>
+                </center>
+            </div>
+            <div style="padding-left:440px">
+                <div class="row ">
+                    <label style="margin-left:15px">Genres</label>
+                    <div class="col-md-2 margin-top-10 col-sm-9 col-xs-9 ">
+
+                        <select class="selectpicker " style="width:300px;height:40px " ng-model="selectedGenre" ng-options="genre.name for genre in genreList">
+                            <option value="" selected disabled>Select Genre</option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-3 padding-right-0 margin-top-10 col-sm-3 col-xs-3 " style="margin-left: 182px; ">
+                        <button ng-show='!update' type="button " id="font-size-12 " ng-click="addGenre(selectedGenre) " class="btn btn-success padding-6-30 ">Add</button>
+
+                    </div>
+                    <div class="col-md-5 padding-left-0 col-sm-12 col-xs-12 " style="margin-top:20px ">
+                        <div ng-repeat="genre in genreArray track by $index ">
+
+
+                            <button type="button " class="btn btn-primary " ng-click='classificationSelected(classification)' style="margin-left:8px;width:100px;height:30px;margin-top:10px "> {{genre.name}} </button>
+
+                            <button ng-click="removeGenre(genre) " style="margin-top:10px "><a class="glyphicon glyphicon-remove "></a></button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <center style="margin-top:20px"><button type="submit " class="btn btn-success " style="width:300px;height:40px " ng-disabled="signupForm.$invalid " ng-click="saveRecord(record,recordForm.$valid) ">Save Record</button></center>
+
+            <center>
+                <p class="text-success " ng-show="successMsg "><strong class="text-success ">{{successMsg}}</strong></p>
+            </center>
+            <center>
+                <p class="text-danger " ng-show="errorMsg ">
+                    {{errorMsg}}
+                </p>
+            </center>
+
+        </form>
+    </div>
+</div>

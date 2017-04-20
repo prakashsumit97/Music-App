@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+        <center ng-if="idExist">
+            <h1>Edit Genre</h1>
+        </center>
+        <center ng-if="!idExist">
+            <h1>Add New Genre</h1>
+        </center>
+    </div>
+    <div>
+        <hr>
+    </div>
+    <div class="row">
+        <form role="form" name="genreForm">
+            <div class="form-group" style="margin-top:30px">
+                <label style="margin-left: 420px;">Genre Name</label>
+                <center><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Genre" style="width:300px;height:40px" name="title" ng-model="genreDetails.name" required></center>
+
+            </div>
+            <center style="margin-top:20px"><button type="submit " class="btn btn-success " style="width:300px;height:40px " ng-disabled="genreDetails.$invalid " ng-click="saveGenre(genreDetails,genreForm.$valid) ">Save Genre</button></center>
+
+            <center>
+                <p class="text-success " ng-show="successMsg "><strong class="text-success ">{{successMsg}}</strong></p>
+            </center>
+            <center>
+                <p class="text-danger " ng-show="errorMsg ">
+                    {{errorMsg}}
+                </p>
+            </center>
+
+        </form>
+    </div>
+</div>
